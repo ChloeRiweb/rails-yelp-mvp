@@ -1,0 +1,32 @@
+<h1><%= @restaurant.name %></h1>
+
+<div class="card" style="width: 18rem;">
+  <div class="card-header">
+    type: <%= @restaurant.category %>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">address: <%= @restaurant.address %></li>
+    <li class="list-group-item">phone: <%= @restaurant.phone_number %></li>
+  </ul>
+</div>
+
+<%= link_to "Add a review", new_restaurant_review_path(@restaurant)  %>
+<%= link_to "Back to list", restaurants_path %>
+
+<ul class="list-group">
+  <% @restaurant.reviews.each do |review| %>
+    <!-- <li class="list-group-item"><%= review.content %></li> -->
+    <div class="card">
+      <div class="card-header">
+        Review
+      </div>
+      <div class="card-body">
+        <blockquote class="blockquote mb-0">
+          <p><%= review.rating %></p>
+          <p><%= review.content %></p>
+          <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Le Wagon</cite></footer>
+        </blockquote>
+      </div>
+    </div>
+  <% end %>
+</ul>
